@@ -7,7 +7,7 @@
             <i class="fas fa-exclamation-triangle"></i>
         </div>
         <div class="warning-content">
-            <strong>Note:</strong> Once you complete this level, you cannot return to it. Make sure you're ready before submitting the flag!
+            <strong>Warning:</strong> Once you complete this level, you cannot return. Prepare yourself before submitting the flag!
         </div>
         <div class="warning-border"></div>
     </div>
@@ -18,8 +18,8 @@
                 <div class="level-number">{{ level|default(1) }}</div>
                 <div class="level-text">LEVEL</div>
             </div>
-            <h2 class="mission-title">
-                <span class="title-text">{{ level_data.title }}</span>
+            <h2 class="mission-title glitch-text" data-text="Mission Title">
+                <span class="title-text">Mission Title</span>
                 <div class="title-decoration"></div>
             </h2>
         </div>
@@ -29,13 +29,13 @@
                 {% for i in range(1, 6) %}
                 <div class="progress-node {% if i <= level|default(1) %}active{% endif %}">
                     <div class="node-point"></div>
-                    <div class="node-label">{{ i }}</div>
-                    {% if not loop.last %}
-                        <div class="node-line"></div>
-                    {% endif %}
                 </div>
                 {% endfor %}
             </div>
+        </div>
+
+        <div class="challenge-description glow-text">
+            <p>Your mission is to complete the challenge and submit the flag!</p>
         </div>
 
         <div class="mission-card">
