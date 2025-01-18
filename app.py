@@ -83,6 +83,9 @@ class Submission(db.Model):
     is_correct = db.Column(db.Boolean, nullable=False)
 
 # Level sections and their corresponding hints
+
+
+
 LEVEL_SECTIONS = {
     1: {
         'title': 'Hidden in Kanishk Plain Sight',
@@ -132,7 +135,8 @@ Seek the lady, her story profound,
 A mother, a founder, forever renowned.  
 Who is she, and what wisdom does she share?  
 Her presence whispers a legacy rare.""",
-        'code': 'HTML5GoldRush'
+        'code': 'HTML5GoldRush',
+        'is_hint': False
     },
     {
         'title': 'The Rising Temple',
@@ -143,7 +147,8 @@ A quiet refuge, where moments last.
 
 What place is blooming, serene and bright,  
 A haven of calm, bathed in light?""",
-        'code': 'CSSMysticTrail'
+        'code': 'CSSMysticTrail',
+        'is_hint': False
     },
     {
         'title': 'The Humble Shade',
@@ -152,7 +157,8 @@ In front of the place where smiles are made,
 A simple retreat, in the shade.  
 What is this spot, serene and small,  
 A peaceful corner, welcoming all?""",
-        'code': 'DecodeTheDOM'
+        'code': 'DecodeTheDOM',
+        'is_hint': False
     },
     {
         'title': 'The Sholay Scene',
@@ -162,7 +168,8 @@ Amidst the hustle, a quiet space,
 Like a tale, full of grace.  
 What spot is this, where calm is found,  
 A green escape, where peace resounds?""",
-        'code': 'JSPathfinder'
+        'code': 'JSPathfinder',
+        'is_hint': False
     },
     {
         'title': 'The Field Haven',
@@ -171,7 +178,8 @@ A quiet refuge, where footsteps lie.
 A hidden haven where knowledge aligns.  
 What place is this, where echoes cease,  
 A secret shelter, a moment of peace?""",
-        'code': 'APIExplorer22'
+        'code': 'APIExplorer22',
+        'is_hint': False
     },
     {
         'title': 'The Proud Monument',
@@ -181,7 +189,8 @@ Beside the waters, where ripples play,
 A quiet corner to end your day.  
 What place is this, where stillness flows,  
 A monument of pride where calmness grows?""",
-        'code': 'APIExplorer22'
+        'code': 'APIExplorer22',
+        'is_hint': False
     },
     {
         'title': 'The Gateway',
@@ -190,14 +199,16 @@ A threshold where journeys and minds emerge.
 Yet here, a stillness, softly embraced.  
 What is this space, where time slows down,  
 A fleeting moment, just beyond the town?""",
-        'code': 'CodeQuest2025'
+        'code': 'CodeQuest2025',
+        'is_hint': False
     },
     {
         'title': 'The Cozy Corner',
         'description': """Where the cobblestones meet the sea breeze, and the quiet hum of the city fades, 
 a warm corner invites with the scent of roasted beans and a touch of something fresh from the oven, 
 waiting to be discovered.""",
-        'code': 'XtremeDebugger'
+        'code': 'XtremeDebugger',
+        'is_hint': False
     },
     {
         'title': 'The Peaceful Path',
@@ -205,7 +216,8 @@ waiting to be discovered.""",
 Beside the lot where pathways end.  
 Facing knowledge, calm and wide,  
 What is this place where peace resides?""",
-        'code': 'BugBountyHunt'
+        'code': 'BugBountyHunt',
+        'is_hint': False
     },
     {
         'title': 'The Student Hub',
@@ -213,7 +225,8 @@ What is this place where peace resides?""",
 A bustling spot where students feed.  
 Coupons in hand, the rule is clear,  
 What is this place we hold so dear?""",
-        'code': 'NirmaanKnights'
+        'code': 'NirmaanKnights',
+        'is_hint': False
     },
     {
         'title': 'The Silent Space',
@@ -221,7 +234,8 @@ What is this place we hold so dear?""",
 Now silent, its purpose unclear.  
 A lone printer hums where meals once lay,  
 What is this place of a bygone day?""",
-        'code': 'NirmaanKnights'
+        'code': 'NirmaanKnights',
+        'is_hint': False
     },
     {
         'title': 'The Serene Jewel',
@@ -230,7 +244,8 @@ Where whispers and silence collide.
 A place for the bold, a retreat for the still,
 A shimmering jewel that tests your will.
 What is this space, so serene and grand?""",
-        'code': 'DOMVoyagers'
+        'code': 'DOMVoyagers',
+        'is_hint': False
     },
     {
         'title': 'The Colorful Steps',
@@ -238,7 +253,8 @@ What is this space, so serene and grand?""",
 A lively path beyond compare.
 A place of cheer, where stories unfold,
 What is this spot so vibrant and bold?""",
-        'code': 'TreasureInCode'
+        'code': 'TreasureInCode',
+        'is_hint': False
     },
     {
         'title': 'The Elegant Haven',
@@ -249,7 +265,8 @@ With each sip, a world unfolds,
 A treasure trove that quietly holds.
 What is this space, where time stands still,
 A haven of grace, both rich and tranquil?""",
-        'code': 'BackendBandits'
+        'code': 'BackendBandits',
+        'is_hint': False
     },
     {
         'title': 'The Arena Lot',
@@ -257,7 +274,8 @@ A haven of grace, both rich and tranquil?""",
 A parking lot where calmness fills.
 In front of the game, where energy flows,
 What is this spot where quietness grows?""",
-        'code': 'FullStackFury'
+        'code': 'FullStackFury',
+        'is_hint': False
     },
     {
         'title': 'The Guarded Gate',
@@ -265,14 +283,17 @@ What is this spot where quietness grows?""",
 A threshold where all must make their stand.
 Guarded and quiet, yet paths unfold,
 Where is the spot, both strict and bold?""",
-        'code': 'CipherCrafters'
+        'code': 'CipherCrafters',
+        'is_hint': False
     },
     {
         'title': 'The Patient Path',
         'description': """Patience Is All The Strength That Man Need's""",
-        'code': 'FrontendFrenzy'
+        'code': 'FrontendFrenzy',
+        'is_hint': False
     }
 ]
+
 
 
 #kanishk function start here
@@ -285,7 +306,6 @@ class KUserProgress:
         self.current_req = {}
         self.last_currect_submission = get_current_time_now()
         self.current_level = 1
-        self.is_hint = False
         self.locations = LOCATION_HINTS[::]
         self.completed_levels = set()
         self.move_to_next_lvl()
@@ -295,6 +315,7 @@ class KUserProgress:
         random_index = random.randint(0, len(self.locations) - 1)
         random_element = self.locations.pop(random_index)  
         self.current_req = random_element
+
 
 
 def Kget_user_progress(user_id='default'):
@@ -388,7 +409,8 @@ def level(level_number):
     progress = Kget_user_progress(current_user.id)
     
     # If user is at hint page, redirect back to hint
-    if progress.is_hint:
+    #LASTOPTION
+    if progress.current_req['is_hint']:
         return redirect(url_for('location_hint', level=progress.current_level))
     
     # Ensure level number is valid
@@ -425,7 +447,8 @@ def check_flag(level):
         return jsonify({'success': False, 'message': 'Invalid level'})
     
     if submitted_flag == LEVEL_FLAGS[level]:
-        progress.is_hint = True  # Mark that user should be at hint page
+        # print(progress.)
+        progress.current_req['is_hint'] = True
         return jsonify({
             'success': True,
             'message': 'Flag correct! Proceed to find the location.',
@@ -451,6 +474,8 @@ def level_complete(level):
         answer = request.form.get('answer', '').strip()
         # Clear the riddle and progress to next level
         progress.current_level = level + 1
+        progress.move_to_next_lvl()
+        print(progress.locations)
         db.session.commit()
         flash('Congratulations! You\'ve completed this level!', 'success')
         
@@ -458,7 +483,7 @@ def level_complete(level):
         # if level == 5:
         #     return redirect(url_for('congratulations'))
             
-        return redirect(url_for('level', level_number=progress.current_level))
+        # return redirect(url_for('level', level_number=progress.current_level))
         
 
 @app.route('/level_time/<int:level>')
@@ -476,13 +501,19 @@ def location_hint(level):
     if level != progress.current_level:
         return redirect(url_for('level', level_number=progress.current_level))
     
+    print(progress.current_req['is_hint'])
+    
     # If not marked as at_hint, redirect to level
-    if not progress.is_hint:
+    if not progress.current_req['is_hint']:
         return redirect(url_for('level', level_number=progress.current_level))
     
     # hint_data = LOCATION_HINTS.get(level, {})
     hint_data = progress.current_req 
     print(hint_data)
+    print(progress.current_req['is_hint'])
+        
+    print("This was here fro so")
+    
     # print(hint_data.title)
     return render_template('location_hint.html', 
                          level=level,
@@ -492,6 +523,7 @@ def location_hint(level):
 @app.route('/verify_location/<int:level>', methods=['POST'])
 @login_required
 def verify_location(level):
+    print("This was here")
     progress = Kget_user_progress(current_user.id)
     data = request.get_json()
     submitted_code = data.get('code', '').strip()
@@ -514,8 +546,11 @@ def verify_location(level):
     if submitted_code == expected_code:
         # Mark current level as completed
         progress.completed_levels.add(level)
-        progress.at_hint = False  # Reset hint status
-        
+        progress.move_to_next_lvl()
+
+        # progress.at_hint = False  # Reset hint status
+        print(progress.current_req)
+        print(progress.current_req['is_hint'])
         # Move to next level
         if level > TOTAL_LVL:
             return jsonify({
@@ -530,6 +565,7 @@ def verify_location(level):
             'message': f'Location verified! Moving to level {progress.current_level}',
             'redirect': f'/level/{progress.current_level}'
         })
+
     
     return jsonify({
         'success': False,
