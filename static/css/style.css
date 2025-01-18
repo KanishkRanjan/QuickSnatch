@@ -993,3 +993,146 @@ code {
 .highlight.current {
     background: rgba(46, 204, 113, 0.3);
 }
+
+/* Sidebar Styling */
+.sidebar {
+    width: 300px;
+    background: rgba(0, 20, 0, 0.95);
+    border-right: 1px solid rgba(0, 255, 0, 0.1);
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.1);
+}
+
+/* Cyber Grid Background */
+.sidebar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(0, 255, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 0, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    opacity: 0.1;
+    animation: grid-scroll 20s linear infinite;
+}
+
+/* User Profile Section */
+.user-profile {
+    background: rgba(0, 40, 0, 0.3);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+    backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+}
+
+.user-profile::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 0, 0.2),
+        transparent
+    );
+    animation: shine 3s infinite;
+}
+
+.user-avatar {
+    background: rgba(0, 40, 0, 0.8);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+}
+
+.user-avatar i {
+    color: #0f0;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+/* Level Navigation */
+.level-nav-link {
+    background: rgba(0, 40, 0, 0.2);
+    border: 1px solid rgba(0, 255, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.level-nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: #0f0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.level-nav-link:hover {
+    background: rgba(0, 40, 0, 0.4);
+    border-color: rgba(0, 255, 0, 0.3);
+    transform: translateX(5px);
+}
+
+.level-nav-link:hover::before {
+    opacity: 1;
+}
+
+.level-nav-link.active {
+    background: rgba(0, 255, 0, 0.1);
+    border-color: rgba(0, 255, 0, 0.4);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+}
+
+/* Stats Section */
+.stats-section {
+    border-top: 1px solid rgba(0, 255, 0, 0.1);
+    margin-top: 2rem;
+    padding-top: 2rem;
+    position: relative;
+}
+
+.stats-item {
+    background: rgba(0, 40, 0, 0.2);
+    border: 1px solid rgba(0, 255, 0, 0.1);
+    border-radius: 8px;
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.stats-item:hover {
+    transform: translateX(5px);
+    border-color: rgba(0, 255, 0, 0.3);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
+}
+
+.stats-value {
+    color: #0f0;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    20% { left: 100%; }
+    100% { left: 100%; }
+}
+
+@keyframes grid-scroll {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(20px); }
+}
