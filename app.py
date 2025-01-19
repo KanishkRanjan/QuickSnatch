@@ -143,67 +143,7 @@ A haven of calm, bathed in light?""",
         'is_hint': False
     },
     {
-        'title': 'The Humble Shade',
-        'description': """A humble shade stands, quiet and blessed.  
-In front of the place where smiles are made,  
-A simple retreat, in the shade.  
-What is this spot, serene and small,  
-A peaceful corner, welcoming all?""",
-        'code': 'DecodeTheDOM',
-        'is_hint': False
-    },
-    {
-        'title': 'The Sholay Scene',
-        'description': """Right by the halls, where footsteps fade,  
-A patch of green, like a scene in *Sholay*'s shade.  
-Amidst the hustle, a quiet space,  
-Like a tale, full of grace.  
-What spot is this, where calm is found,  
-A green escape, where peace resounds?""",
-        'code': 'JSPathfinder',
-        'is_hint': False
-    },
-    {
-        'title': 'The Field Haven',
-        'description': """Beside the field where the ball does fly,  
-A quiet refuge, where footsteps lie.  
-A hidden haven where knowledge aligns.  
-What place is this, where echoes cease,  
-A secret shelter, a moment of peace?""",
-        'code': 'APIExplorer22',
-        'is_hint': False
-    },
-    {
-        'title': 'The Proud Monument',
-        'description': """In front of the building where the name stands tall,  
-A statue of pride, a symbol for all.  
-Beside the waters, where ripples play,  
-A quiet corner to end your day.  
-What place is this, where stillness flows,  
-A monument of pride where calmness grows?""",
-        'code': 'APIExplorer22',
-        'is_hint': False
-    },
-    {
-        'title': 'The Gateway',
-        'description': """At the gate where daily steps converge,  
-A threshold where journeys and minds emerge.    
-Yet here, a stillness, softly embraced.  
-What is this space, where time slows down,  
-A fleeting moment, just beyond the town?""",
-        'code': 'CodeQuest2025',
-        'is_hint': False
-    },
-    {
-        'title': 'The Cozy Corner',
-        'description': """Where the cobblestones meet the sea breeze, and the quiet hum of the city fades, 
-a warm corner invites with the scent of roasted beans and a touch of something fresh from the oven, 
-waiting to be discovered.""",
-        'code': 'XtremeDebugger',
-        'is_hint': False
-    },
-    {
-        'title': 'The Peaceful Path',
+        'title': 'The Rising Temple',
         'description': """Where worth rest and shadows blend,  
 Beside the lot where pathways end.  
 Facing knowledge, calm and wide,  
@@ -211,45 +151,8 @@ What is this place where peace resides?""",
         'code': 'BugBountyHunt',
         'is_hint': False
     },
-    {
-        'title': 'The Student Hub',
-        'description': """Where hunger meets a daily need,  
-A bustling spot where students feed.  
-Coupons in hand, the rule is clear,  
-What is this place we hold so dear?""",
-        'code': 'NirmaanKnights',
-        'is_hint': False
-    },
-    {
-        'title': 'The Silent Space',
-        'description': """Once alive with chatter and cheer,  
-Now silent, its purpose unclear.  
-A lone printer hums where meals once lay,  
-What is this place of a bygone day?""",
-        'code': 'NirmaanKnights',
-        'is_hint': False
-    },
-    {
-        'title': 'The Serene Jewel',
-        'description': """A heaven of calm, both deep and wide,
-Where whispers and silence collide.
-A place for the bold, a retreat for the still,
-A shimmering jewel that tests your will.
-What is this space, so serene and grand?""",
-        'code': 'DOMVoyagers',
-        'is_hint': False
-    },
-    {
-        'title': 'The Colorful Steps',
-        'description': """Steps of color, bright and rare,
-A lively path beyond compare.
-A place of cheer, where stories unfold,
-What is this spot so vibrant and bold?""",
-        'code': 'TreasureInCode',
-        'is_hint': False
-    },
-    {
-        'title': 'The Elegant Haven',
+        {
+        'title': 'The Rising Temple',
         'description': """Where whispers of luxury fill the air,
 And every corner breathes beauty rare.
 A place where elegance and taste collide,
@@ -260,8 +163,102 @@ A haven of grace, both rich and tranquil?""",
         'code': 'BackendBandits',
         'is_hint': False
     },
-    {
-        'title': 'The Arena Lot',
+            {
+        'title': 'The Rising Temple',
+        'description': """Once alive with chatter and cheer,  
+Now silent, its purpose unclear.  
+A lone printer hums where meals once lay,  
+What is this place of a bygone day?""",
+        'code': 'NirmaanKnights',
+        'is_hint': False
+    },
+                {
+        'title': 'The Rising Temple',
+        'description': """Where the cobblestones meet the sea breeze, and the quiet hum of the city fades, a warm corner invites with the scent of roasted beans and a touch of something fresh from the oven, waiting to be discovered.""",
+        'code': 'XtremeDebugger',
+        'is_hint': False
+    },
+     {
+        'title': 'The Rising Temple',
+        'description': """Beside the field where the ball does fly,  
+A quiet refuge, where footsteps lie.  
+A hidden haven where knowledge align.  
+What place is this, where echoes cease,  
+A secret shelter, a moment of peace?""",
+        'code': 'APIExplorer22',
+        'is_hint': False
+    },
+         {
+        'title': 'The Rising Temple',
+        'description': """A heaven of calm, both deep and wide,
+Where whispers and silence collide.
+A place for the bold, a retreat for the still,
+A shimmering jewel that tests your will.
+What is this space, so serene and grand?""",
+        'code': 'DOMVoyagers',
+        'is_hint': False
+    },
+
+             {
+        'title': 'The Rising Temple',
+        'description': """Patience Is All The Strength That Man Need's""",
+        'code': 'FrontendFrenzy',
+        'is_hint': False
+    },
+
+             {
+        'title': 'The Rising Temple',
+        'description': """Steps of color, bright and rare,
+A lively path beyond compare.
+A place of cheer, where stories unfold,
+What is this spot so vibrant and bold?""",
+        'code': 'TreasureInCode',
+        'is_hint': False
+    },
+                 {
+        'title': 'The Rising Temple',
+        'description': """Right by the halls, where footsteps fade,  
+A patch of green, like a scene in *Sholay*'s shade.  
+Amidst the hustle, a quiet space,  
+Like a tale, full of grace.  
+What spot is this, where calm is found,  
+A green escape, where peace resounds?""",
+        'code': 'JSPathfinder',
+        'is_hint': False
+    },
+                     {
+        'title': 'The Rising Temple',
+        'description': """At the gate where daily steps converge,  
+A threshold where journeys and minds emerge.    
+Yet here, a stillness, softly embraced.  
+What is this space, where time slows down,  
+A fleeting moment, just beyond the town?""",
+        'code': 'CodeQuest2025',
+        'is_hint': False
+    },
+                         {
+        'title': 'The Rising Temple',
+        'description': """Steel beams rise where once was plain,""",
+        'code': 'SyntaxSurvivours',
+        'is_hint': False
+    },
+                             {
+        'title': 'The Rising Temple',
+        'description': """I once had lines,now i dont, Goals and grasses, soon to be,but not. my surface was smooth,but now its torn,  In time,I'll be ready, but for now ,I'm worn.""",
+        'code': 'HackTheProtocol',
+        'is_hint': False
+    },
+                                 {
+        'title': 'The Rising Temple',
+        'description': """Where hunger meets a daily need,  
+A bustling spot where students feed.  
+Coupons in hand, the rule is clear,  
+What is this place we hold so dear?""",
+        'code': 'PixelPirates',
+        'is_hint': False
+    },
+                                     {
+        'title': 'The Rising Temple',
         'description': """Where the arena roars, but wheels stand still,
 A parking lot where calmness fills.
 In front of the game, where energy flows,
@@ -269,21 +266,17 @@ What is this spot where quietness grows?""",
         'code': 'FullStackFury',
         'is_hint': False
     },
-    {
-        'title': 'The Guarded Gate',
-        'description': """Entry and exits with proof in hand,
-A threshold where all must make their stand.
-Guarded and quiet, yet paths unfold,
-Where is the spot, both strict and bold?""",
-        'code': 'CipherCrafters',
+                                         {
+        'title': 'The Rising Temple',
+        'description': """In front of the building where the name stands tall,  
+A statue of pride, a symbol for all.  
+Beside the waters, where ripples play,  
+A quiet corner to end your day.  
+What place is this, where stillness flows,  
+A monument of pride where calmness grows?""",
+        'code': 'SupabaseSeekers',
         'is_hint': False
     },
-    {
-        'title': 'The Patient Path',
-        'description': """Patience Is All The Strength That Man Need's""",
-        'code': 'FrontendFrenzy',
-        'is_hint': False
-    }
 ]
 
 
