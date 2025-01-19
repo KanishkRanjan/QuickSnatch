@@ -202,7 +202,7 @@ What is this space, so serene and grand?""",
              {
         'title': 'The Rising Temple',
         'description': """Patience Is All The Strength That Man Need's""",
-        'code': 'FrontendFrenzy',
+        'code': 'BugBountyHunt',
         'is_hint': False
     },
 
