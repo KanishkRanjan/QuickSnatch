@@ -3,19 +3,6 @@
 {% block level_title %}Introduction{% endblock %}
 
 {% block challenge_description %}
-<div class="challenge-text">
-    Your first mission is to understand the basics of HTTP requests.
-</div>
-
-<ul class="challenge-list">
-    <li>Make a GET request to the provided endpoint</li>
-    <li>Look for the flag in the response headers</li>
-    <li>Submit the flag to proceed to the next level</li>
-</ul>
-
-<div class="challenge-text">
-    <strong>Hint:</strong> Pay attention to custom HTTP headers in the response.
-</div>
 {% endblock %}
 
 {% block curl_command %}curl -s https://quicksnatch.challenge/level1/start | bash{% endblock %}

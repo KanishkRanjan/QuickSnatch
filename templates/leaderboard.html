@@ -52,7 +52,6 @@
                     <th><div class="th-content">#</div></th>
                     <th><div class="th-content">OPERATOR</div></th>
                     <th><div class="th-content">LEVEL</div></th>
-                    <th><div class="th-content">LAST SEEN</div></th>
                     <th><div class="th-content">MISSION TIME</div></th>
                 </tr>
             </thead>
@@ -82,9 +81,6 @@
                     <td>
                         <div class="hacker-tag">
                             <span class="hacker-name">{{ user.username }}</span>
-                            {% if user.last_submission and (now - user.last_submission).total_seconds() < 300 %}
-                                <span class="status online">ACTIVE</span>
-                            {% endif %}
                         </div>
                     </td>
                     <td>
@@ -92,20 +88,14 @@
                             <div class="level-bar">
                                 <div class="level-progress" style="width: {{ (user.current_level / 5) * 100 }}%"></div>
                             </div>
-                            <span class="level-number">LVL {{ user.current_level }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="timestamp">
-                            <i class="fas fa-clock"></i>
-                            {{ user.last_submission.strftime('%Y-%m-%d %H:%M:%S') if user.last_submission else 'N/A' }}
+                            <span class="level-number">QS {{ user.current_level }}</span>
                         </div>
                     </td>
                     <td>
                         <div class="mission-time">
-                            {% if user.start_time and user.last_submission %}
+                            {% if user.last_correct_submission %}
                                 <i class="fas fa-hourglass-half"></i>
-                                {{ (user.last_submission - user.start_time).total_seconds()|int // 60 }}m
+                                {{ user.last_correct_submission}}m
                             {% else %}
                                 --
                             {% endif %}

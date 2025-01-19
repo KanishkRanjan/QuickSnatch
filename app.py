@@ -19,7 +19,7 @@ import random
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///ctf.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///ctf3.db'
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
@@ -33,54 +33,9 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
     current_level = db.Column(db.Integer, default=1)
-    start_time = db.Column(db.DateTime, nullable=True)
-    last_submission = db.Column(db.DateTime, nullable=True)
-    level_times = db.relationship('LevelTime', backref='user', lazy=True)
+    last_correct_submission = db.Column(db.String(20), nullable=True)
+    last_correct_submission_serialized = db.Column(db.Integer, default=1)
 
-    def get_level_time(self, level):
-        level_time = LevelTime.query.filter_by(user_id=self.id, level=level).order_by(LevelTime.start_time.desc()).first()
-        if level_time:
-            return level_time.calculate_time_spent()
-        return None
-
-    def format_time_spent(self, level):
-        time_spent = self.get_level_time(level)
-        if not time_spent:
-            return "Not started"
-        
-        total_seconds = int(time_spent.total_seconds())
-        hours = total_seconds // 3600
-        minutes = (total_seconds % 3600) // 60
-        seconds = total_seconds % 60
-        
-        if hours > 0:
-            return f"{hours}h {minutes}m {seconds}s"
-        elif minutes > 0:
-            return f"{minutes}m {seconds}s"
-        else:
-            return f"{seconds}s"
-
-class LevelTime(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    level = db.Column(db.Integer, nullable=False)
-    start_time = db.Column(db.DateTime, nullable=False)
-    end_time = db.Column(db.DateTime, nullable=True)
-    time_spent = db.Column(db.Interval, nullable=True)
-
-    def calculate_time_spent(self):
-        if self.end_time and self.start_time:
-            return self.end_time - self.start_time
-        elif self.start_time:
-            return datetime.now(pytz.UTC) - self.start_time
-        return None
-
-class Submission(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    level = db.Column(db.Integer, nullable=False)
-    submitted_at = db.Column(db.DateTime, nullable=False)
-    is_correct = db.Column(db.Boolean, nullable=False)
 
 # Level sections and their corresponding hints
 
@@ -89,37 +44,74 @@ class Submission(db.Model):
 LEVEL_SECTIONS = {
     1: {
         'title': 'Hidden in Kanishk Plain Sight',
-        'description': """A secret is hidden in plain sight, though not immediately obvious. Can you find the hidden file within this directory and reveal its contents?
+        'description': """
+        "A secret is hidden in plain sight, though not immediately obvious. Can you find the hidden file within this directory and reveal its contents?"
 
-Hint: Sometimes what you can't see is just as important as what you can see.""",
+Intended User Thought Process:
+
+The user should realize that there are hidden files.
+
+They should use ls -al to list files.
+
+They should use cat to reveal the flag.
+        """,
         'curl_command': 'curl -s https://raw.githubusercontent.com/nst-sdc/cli_ctf/refs/heads/main/level1.sh | bash',
     },
     2: {
         'title': 'The Hidden Path',
-        'description': """A flag is tucked away, hidden from a simple list of files. It's said that a special directory hides the key. Can you navigate your way through and find what lies within and reveal the flag?
+        'description': """
+        "A flag is tucked away, hidden from a simple list of files. It's said that a special directory hides the key. Can you navigate your way through and find what lies within and reveal the flag?"
 
-Hint: Some directories prefer to stay out of sight, but they can't hide from the right command.""",
+Intended User Thought Process:
+
+The user should realize that there are hidden directories.
+
+They should use ls -al to list files and discover the hidden directory.
+
+They should use cat to reveal the flag file contents.
+        """,
         'curl_command': 'curl -s https://raw.githubusercontent.com/nst-sdc/cli_ctf/refs/heads/main/level2.sh | bash',
     },
     3: {
         'title': 'Following the Links',
-        'description': """A complex path leads to the flag. The flag itself is hidden in a file, and its path includes a symbolic link. Your job is to navigate through the file structure, follow the link and then obtain the flag.
+        'description': """
+"A complex path leads to the flag. The flag itself is hidden in a file, and its path includes a symbolic link. Your job is to navigate through the file structure, follow the link and then obtain the flag"
 
-Hint: Not all paths are what they seem. Some are just pointers to the real destination.""",
+Intended User Thought Process:
+
+The user should be aware of the symbolic link and the hint.
+
+They should navigate into the hidden directory and locate the symlink.
+
+They should then use the script to reveal the flag.""",
         'curl_command': 'curl -s https://raw.githubusercontent.com/nst-sdc/cli_ctf/refs/heads/main/level3.sh | bash',
     },
     4: {
         'title': 'Permission Granted',
-        'description': """A direct path is needed, but you must use special permissions to read the content. You have to read the contents of the script to understand how to access the flag.
+        'description': """
+        "A direct path is needed, but you must use special permissions to read the content. You have to read the contents of the script to understand how to access the flag. "
 
-Hint: Sometimes you need the right permissions to access what you seek. The script holds the key to gaining access.""",
+Intended User Thought Process:
+
+The user should attempt to read the flag and find out that they don't have the permissions.
+
+They should read the content of the script.
+
+They should execute the script.
+        """,
         'curl_command': 'curl -s https://raw.githubusercontent.com/nst-sdc/cli_ctf/refs/heads/main/level4.sh | bash',
     },
     5: {
         'title': 'Decode the Message',
-        'description': """A message has been encoded, and the key is available within the directory. You must use command line tools to decode the message. Explore the directory, find the message and decode it.
+        'description': """
+        "A message has been encoded, and the key is available within the directory. You must use command line tools to decode the message. Explore the directory, find the message and decode it."
 
-Hint: The message may look like gibberish, but with the right decoding tool, its true meaning will be revealed.""",
+Intended User Thought Process:
+
+The user should realize that they are given a command and a file, then will need to use it.
+
+The user must find the encoded file, and then realize that they need to use the base64 command to decode it.
+        """,
         'curl_command': 'curl -s https://raw.githubusercontent.com/nst-sdc/cli_ctf/refs/heads/main/level5.sh | bash',
     }
 }
@@ -301,11 +293,16 @@ Where is the spot, both strict and bold?""",
 def get_current_time_now():
     return datetime.now().strftime("%H:%M:%S:%f")[:-3]
 
+def get_current_time_now_serialized():
+    return int(datetime.now().strftime("%H%M%S%f")[:-3])
+
+
 class KUserProgress:
     def __init__(self):
         self.current_req = {}
         self.last_currect_submission = get_current_time_now()
-        self.current_level = 1
+        self.current_level = 0
+        self.is_hint = False
         self.locations = LOCATION_HINTS[::]
         self.completed_levels = set()
         self.move_to_next_lvl()
@@ -343,7 +340,7 @@ def get_user_progress(user_id='default'):
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    return  db.session.get(User, int(user_id))
 
 @app.route('/')
 def index():
@@ -361,12 +358,15 @@ def login():
         
         if user and bcrypt.checkpw(password.encode('utf-8'), user.password):
             login_user(user)
-            if not user.start_time:
-                user.start_time = datetime.now(pytz.UTC)
-                db.session.commit()
             flash('Successfully logged in!', 'success')
             progress = Kget_user_progress(user.id)
 
+            if user != None:
+                progress.current_level = user.current_level
+                # progress.is_hint = True
+                # progress.current_level = user.current_level
+
+                # progress.is_hint = user.is_hint
             # print(get_user_progress(user.id))
             return redirect(url_for('level', level_number=progress.current_level))
         
@@ -406,11 +406,14 @@ def logout():
 
 @app.route('/level/<int:level_number>')
 def level(level_number):
-    progress = Kget_user_progress(current_user.id)
-    
+    # print(current_user.id)
+    try:
+        progress = Kget_user_progress(current_user.id)
+    except Exception:
+        return redirect('/')
     # If user is at hint page, redirect back to hint
     #LASTOPTION
-    if progress.current_req['is_hint']:
+    if progress.is_hint:
         return redirect(url_for('location_hint', level=progress.current_level))
     
     # Ensure level number is valid
@@ -422,7 +425,7 @@ def level(level_number):
     if level_number != progress.current_level:
         flash('You can only access your current level!', 'danger')
         return redirect(url_for('level', level_number=progress.current_level))
-    
+    print(level_number ,progress.current_level )
     level_data = LEVEL_SECTIONS.get(level_number, {})
     return render_template(f'challenges/level_{level_number}.html', 
                          level=level_number,
@@ -431,7 +434,13 @@ def level(level_number):
 @app.route('/leaderboard')
 @login_required
 def leaderboard():
-    users = User.query.order_by(User.current_level.desc(), User.username).all()
+    # user = User.query.get(current_user.id) 
+    # users = User.query.order_by(User.current_level.desc(), User.username).all() #DELETE
+    users = User.query.order_by(User.current_level.desc(), User.last_correct_submission_serialized.asc()).all()
+
+    # print(user_progress)
+    for usr in user_progress.keys():
+        print(usr, user_progress[usr].locations)
     return render_template('leaderboard.html', users=users)
 
 @app.route('/check_flag/<int:level>', methods=['POST'])
@@ -448,7 +457,7 @@ def check_flag(level):
     
     if submitted_flag == LEVEL_FLAGS[level]:
         # print(progress.)
-        progress.current_req['is_hint'] = True
+        progress.is_hint = True
         return jsonify({
             'success': True,
             'message': 'Flag correct! Proceed to find the location.',
@@ -471,13 +480,18 @@ def level_complete(level):
         return redirect(url_for('level', level_number=progress.current_level))
     
     if request.method == 'POST':
-        answer = request.form.get('answer', '').strip()
-        # Clear the riddle and progress to next level
-        progress.current_level = level + 1
-        progress.move_to_next_lvl()
-        print(progress.locations)
-        db.session.commit()
-        flash('Congratulations! You\'ve completed this level!', 'success')
+        print("Hello World")
+        # print(progress.locations)
+        # print("This could be nothing")
+        # user = User.query.get(current_user.id) 
+        # user.current_level = progress.current_level
+        # user.last_correct_submission = get_current_time_now()
+        # user.last_correct_submission_serialized = get_current_time_now_serialized()
+        # print(f"Progress Level: {progress.current_level}")
+        # print(f"Current Time: {get_current_time_now()}")
+        # print(f"Serialized Time: {get_current_time_now_serialized()}")
+        # db.session.commit()
+        # flash('Congratulations! You\'ve completed this level!', 'success')
         
         # If user completed level 5, redirect to congratulations page
         # if level == 5:
@@ -500,19 +514,13 @@ def location_hint(level):
     # Only allow access to current level's hint
     if level != progress.current_level:
         return redirect(url_for('level', level_number=progress.current_level))
-    
-    print(progress.current_req['is_hint'])
-    
+        
     # If not marked as at_hint, redirect to level
-    if not progress.current_req['is_hint']:
+    if not progress.is_hint:
         return redirect(url_for('level', level_number=progress.current_level))
     
     # hint_data = LOCATION_HINTS.get(level, {})
     hint_data = progress.current_req 
-    print(hint_data)
-    print(progress.current_req['is_hint'])
-        
-    print("This was here fro so")
     
     # print(hint_data.title)
     return render_template('location_hint.html', 
@@ -523,7 +531,6 @@ def location_hint(level):
 @app.route('/verify_location/<int:level>', methods=['POST'])
 @login_required
 def verify_location(level):
-    print("This was here")
     progress = Kget_user_progress(current_user.id)
     data = request.get_json()
     submitted_code = data.get('code', '').strip()
@@ -543,14 +550,30 @@ def verify_location(level):
         })
     
     expected_code = hint_data['code']
+    print(submitted_code , expected_code)
     if submitted_code == expected_code:
         # Mark current level as completed
-        progress.completed_levels.add(level)
-        progress.move_to_next_lvl()
 
-        # progress.at_hint = False  # Reset hint status
-        print(progress.current_req)
-        print(progress.current_req['is_hint'])
+        progress.current_level = level+1
+        # print(progress.locations)
+        print("This could be nothing")
+        user = db.session.get(User, current_user.id)
+        user.current_level = progress.current_level
+        user.last_correct_submission = get_current_time_now()
+        user.last_correct_submission_serialized = get_current_time_now_serialized() #UPDATE
+        print(user_progress)
+        try:
+            db.session.commit()
+            progress.completed_levels.add(level)
+            progress.is_hint = False 
+            progress.move_to_next_lvl() #MOVE
+        except Exception :
+            return jsonify({
+                'success': False,
+                'message': 'Server Internal Issue. Reload and try again!'
+            })
+
+
         # Move to next level
         if level > TOTAL_LVL:
             return jsonify({
@@ -559,7 +582,6 @@ def verify_location(level):
                 'redirect': '/congratulations'
             })
             
-        progress.current_level = level+1
         return jsonify({
             'success': True,
             'message': f'Location verified! Moving to level {progress.current_level}',
